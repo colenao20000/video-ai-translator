@@ -1,0 +1,36 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "video-ai-translator"
+version = "1.0.0"
+description = "Video AI Translator / Editor Studio - Desktop Application"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+    "PySide6>=6.6.0",
+    "pydantic>=2.0.0",
+    "httpx>=0.25.0",
+    "keyring>=24.0.0",
+    "soundfile>=0.12.0",
+    "numpy>=1.24.0",
+    "scipy>=1.10.0",
+    "opencv-python-headless>=4.8.0",
+    "rapidocr-onnxruntime>=1.3.0",
+    "faster-whisper>=1.0.0",
+    "vieneu>=3.8.3,<4",
+]
+
+[project.optional-dependencies]
+separation = ["demucs>=4.0.1"]
+
+[project.scripts]
+vtranslator = "vtranslator.app.application:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+pythonpath = ["."]
+testpaths = ["tests"]
